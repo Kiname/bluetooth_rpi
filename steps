@@ -13,7 +13,7 @@ sudo service bluealsa start
 
 sudo bluetoothctl
 #scan on
-#[NEW] Device 30:C0:1B:C5:25:DD JBL GO (note: find your own device anf copy MAC adress. This one is mine)
+#[NEW] Device 30:C0:1B:C5:25:DD JBL GO (note: find your own device and copy MAC adress. This one is mine)
 #scan off
 #pair 30:C0:1B:C5:25:DD
 #trust 30:C0:1B:C5:25:DD
