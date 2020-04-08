@@ -1,1 +1,39 @@
+;Example with steps to activate Bluetooth on a Raspberry PI zero with Buster.
 
+cd
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo usermod -G bluetooth -a pi
+sudo shutdown -r now
+
+cd
+sudo apt-get install bluealsa
+sudo service bluealsa start
+
+sudo bluetoothctl
+#scan on
+#[NEW] Device 30:C0:1B:C5:25:DD JBL GO (note: find your own device anf copy MAC adress. This one is mine)
+#scan off
+#pair 30:C0:1B:C5:25:DD
+#trust 30:C0:1B:C5:25:DD
+#connect 30:C0:1B:C5:25:DD
+#exit
+
+cd
+sudo nano .asoundrc
+;copy next rows into this file. Use your own MAC adress.
+defaults.bluealsa.interface “hci0”
+defaults.bluealsa.device “30:C0:1B:C5:25:DD”
+defaults.bluealsa.profile “a2dp”
+defaults.bluealsa.delay 10000
+;EOF
+
+cd
+wget https://www.kozco.com/tech/piano2.wav
+aplay -D bluealsa piano2.wav
+
+;Edit rc.local for connect on startup.
+sudo nano /etc/rc.local
+;Before last row exit 0 place next row with your own MAC adress
+echo ‘connect 30:C0:1B:C5:25:DD \n quit’ | bluetoothctl
