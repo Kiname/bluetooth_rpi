@@ -23,9 +23,9 @@ sudo bluetoothctl
 cd
 sudo nano .asoundrc
 ;copy next rows into this file. Use your own MAC adress.
-defaults.bluealsa.interface “hci0”
-defaults.bluealsa.device “30:C0:1B:C5:25:DD”
-defaults.bluealsa.profile “a2dp”
+defaults.bluealsa.interface hci0
+defaults.bluealsa.device 30:C0:1B:C5:25:DD
+defaults.bluealsa.profile a2dp
 defaults.bluealsa.delay 10000
 ;EOF
 
